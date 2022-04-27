@@ -1,0 +1,101 @@
+<h1>Directional Blur Tool</h1>
+
+<canvas width="100px" height="100px" id="canvas"></canvas>
+
+<div id="settings">
+    <input id="scale" type="range" min="-1" max="1" step=".01" value="0">
+    <input type="number" id="scaleNumber" min="-1" max="1" step=".01" value="0">
+    <label>Scale</label>
+
+    <br>
+
+    <input id="angle" type="range" min="-90" max="90" step=".1" value="0">
+    <input type="number" id="angleNumber" min="-90" max="90" step=".1" value="0">
+    <label>Angle</label>
+
+    <br>
+
+    <input id="iterations" type="range" min="1" max="100" step="1" value="50">
+    <input type="number" id="iterationsNumber" min="1" max="100" step="1" value="50">
+    <label>Iterations</label>
+
+    <br><br>
+
+    <form action="" method="get" id="urlform">
+        <input type="text" id="url">
+        <input type="submit" value="Load Image">
+    </form>
+
+</div>
+
+<div id="center"></div>
+
+<script src="https://cdn.jsdelivr.net/npm/twgl.js@4.22.0/dist/4.x/twgl-full.js"></script>
+<script src="main.js"></script>
+
+
+<style>
+
+body {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-left: auto;
+    margin-right: auto;
+    align-self: center;
+    width: max-content;
+}
+
+canvas {
+    max-width: 100%;
+    max-height: calc(100% - 25%);
+    /* image-rendering: pixelated; image-rendering: crisp-edges; */
+}
+
+#center {
+    width: 5vmin;
+    height: 5vmin;
+    position: absolute;
+    top: -6vmin;
+    left: -6vmin;
+    border-radius: 100%;
+    background-color: whitesmoke;
+    transition: opacity .3s ease-in-out;
+    opacity: 30%;
+    border: 1vmin solid black;
+    transform: translate(-50%, -50%);
+
+    pointer-events: none;
+
+}
+
+#center.hidden {
+    opacity: 0;
+    transition: opacity .5s ease-in-out;
+    transition-delay: 3s;
+}
+
+h1 {
+    font-family: sans-serif;
+    text-align: center;
+}
+
+form {
+    padding-left: 2%;
+    width: 80%;
+    display: flex;
+    justify-content: space-between;
+}
+
+#url {
+    width: 100%;
+}
+
+#settings {
+    /* take up remaining horizontal space in vertical flex */
+    width: 100%;
+}
+
+</style>
